@@ -10,7 +10,6 @@ export default {
         sans: ["Inter", "system-ui", "sans-serif"],
       },
      colors: {
-        // ▼▼▼ YE SAB ADD KARO ▼▼▼
 
         border: "hsl(var(--border))",
         background: "hsl(var(--background))",
