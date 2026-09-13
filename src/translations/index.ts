@@ -1,8 +1,9 @@
-export type Language = "en" | "hi" | "ta" | "bn";
+export type Language = "en" | "hi" | "ta" | "bn" | "ur";
 
 export const LANGUAGES: { code: Language; label: string; nativeLabel: string; flag: string }[] = [
   { code: "en", label: "English", nativeLabel: "English", flag: "🇬🇧" },
   { code: "hi", label: "Hindi", nativeLabel: "हिन्दी", flag: "🇮🇳" },
+  { code: "ur", label: "Urdu", nativeLabel: "اردو", flag: "🇵🇰" },
   { code: "ta", label: "Tamil", nativeLabel: "தமிழ்", flag: "🏴" },
   { code: "bn", label: "Bengali", nativeLabel: "বাংলা", flag: "🏴" },
 ];
@@ -39,6 +40,18 @@ type TranslationKeys = {
   trustTitle: string; idVerified: string; skillCertified: string; policeVerified: string; insured: string;
   // Footer
   aboutUs: string; safety: string; pricing: string; help: string; contact: string; privacyPolicy: string; terms: string;
+  // SOS
+  sos: string; sosTitle: string; sosSubtitle: string; sosTap: string; sosLocationTrack: string; sosPoliceCall: string; sosEmergencyContacts: string; sosAlertSent: string;
+  // Voice Assistant
+  voiceAssistant: string; voiceListening: string; voicePrompt: string;
+  // Video Edit
+  videoEdit: string; videoEditTitle: string; videoEditDesc: string; videoUpload: string; videoTrim: string; videoSave: string;
+  // Interfaces
+  workerPortal: string; hiringPortal: string; workerHeroTitle: string; workerHeroSubtitle: string; hiringHeroTitle: string; hiringHeroSubtitle: string;
+  // Auth
+  registerFirst: string; registerFirstDesc: string; registeredEmail: string;
+  // Incoming bookings
+  incomingBookings: string; newBookingRequest: string; acceptBooking: string; declineBooking: string;
 };
 
 const translations: Record<Language, TranslationKeys> = {
@@ -77,6 +90,14 @@ const translations: Record<Language, TranslationKeys> = {
     idVerified: "ID Verified", skillCertified: "Skill Certified", policeVerified: "Police Verified", insured: "Insured",
     aboutUs: "About Us", safety: "Safety & Verification", pricing: "Pricing", help: "Help & FAQ",
     contact: "Contact", privacyPolicy: "Privacy Policy", terms: "Terms of Service",
+    sos: "SOS", sosTitle: "Emergency SOS", sosSubtitle: "One tap to get immediate help", sosTap: "Tap for Emergency Help",
+    sosLocationTrack: "Live Location Tracking", sosPoliceCall: "Call Police (100)", sosEmergencyContacts: "Emergency Contacts", sosAlertSent: "Alert sent! Help is on the way.",
+    voiceAssistant: "Voice Assistant", voiceListening: "Listening...", voicePrompt: "Say what you need — e.g. 'Find a plumber near me'",
+    videoEdit: "Video Editor", videoEditTitle: "Edit Work Videos", videoEditDesc: "Upload and edit videos to showcase your work", videoUpload: "Upload Video", videoTrim: "Trim & Edit", videoSave: "Save Video",
+    workerPortal: "Register Worker", hiringPortal: "Hire a Worker", workerHeroTitle: "Earn with KaamPehechan", workerHeroSubtitle: "Join 10,000+ verified workers earning daily. Get job requests, manage schedule, grow your business.",
+    hiringHeroTitle: "Find Trusted Workers", hiringHeroSubtitle: "Book verified professionals for any job — plumbing, electrical, beauty, cleaning and 30+ services.",
+    registerFirst: "Register First", registerFirstDesc: "Please create an account before signing in. New users must register first.", registeredEmail: "Registered Email",
+    incomingBookings: "Incoming Bookings", newBookingRequest: "New Booking Request", acceptBooking: "Accept", declineBooking: "Decline",
   },
   hi: {
     home: "होम", browse: "खोजें", nearMe: "पास में", login: "लॉग इन", signup: "साइन अप",
@@ -113,6 +134,14 @@ const translations: Record<Language, TranslationKeys> = {
     idVerified: "आईडी सत्यापित", skillCertified: "कौशल प्रमाणित", policeVerified: "पुलिस सत्यापित", insured: "बीमित",
     aboutUs: "हमारे बारे में", safety: "सुरक्षा और सत्यापन", pricing: "मूल्य निर्धारण",
     help: "सहायता और FAQ", contact: "संपर्क", privacyPolicy: "गोपनीयता नीति", terms: "सेवा की शर्तें",
+    sos: "SOS", sosTitle: "आपातकालीन SOS", sosSubtitle: "तुरंत मदद के लिए एक टैप", sosTap: "आपातकालीन मदद के लिए टैप करें",
+    sosLocationTrack: "लाइव लोकेशन ट्रैकिंग", sosPoliceCall: "पुलिस को कॉल करें (100)", sosEmergencyContacts: "आपातकालीन संपर्क", sosAlertSent: "अलर्ट भेजा गया! मदद आ रही है।",
+    voiceAssistant: "वॉइस असिस्टेंट", voiceListening: "सुन रहा हूँ...", voicePrompt: "बताएं क्या चाहिए — जैसे 'प्लंबर ढूंढो'",
+    videoEdit: "वीडियो एडिटर", videoEditTitle: "काम के वीडियो एडिट करें", videoEditDesc: "अपना काम दिखाने के लिए वीडियो अपलोड और एडिट करें", videoUpload: "वीडियो अपलोड", videoTrim: "ट्रिम और एडिट", videoSave: "वीडियो सेव करें",
+    workerPortal: "वर्कर रजिस्टर करें", hiringPortal: "वर्कर हायर करें", workerHeroTitle: "KaamPehechan से कमाएं", workerHeroSubtitle: "10,000+ सत्यापित वर्करों में शामिल हों। जॉब रिक्वेस्ट पाएं, शेड्यूल मैनेज करें।",
+    hiringHeroTitle: "भरोसेमंद वर्कर खोजें", hiringHeroSubtitle: "किसी भी काम के लिए सत्यापित प्रोफेशनल बुक करें — प्लंबिंग, इलेक्ट्रिकल, ब्यूटी, क्लीनिंग और 30+ सेवाएं।",
+    registerFirst: "पहले रजिस्टर करें", registerFirstDesc: "साइन इन से पहले अकाउंट बनाएं। नए यूजर को पहले रजिस्टर करना होगा।", registeredEmail: "रजिस्टर्ड ईमेल",
+    incomingBookings: "आने वाली बुकिंग", newBookingRequest: "नई बुकिंग रिक्वेस्ट", acceptBooking: "स्वीकार करें", declineBooking: "अस्वीकार करें",
   },
   ta: {
     home: "முகப்பு", browse: "தேடு", nearMe: "அருகில்", login: "உள்நுழை", signup: "பதிவு",
@@ -149,6 +178,14 @@ const translations: Record<Language, TranslationKeys> = {
     idVerified: "ஐடி சரிபார்க்கப்பட்டது", skillCertified: "திறன் சான்றிதழ்", policeVerified: "போலீஸ் சரிபார்ப்பு", insured: "காப்பீடு",
     aboutUs: "எங்களைப் பற்றி", safety: "பாதுகாப்பு மற்றும் சரிபார்ப்பு", pricing: "விலை நிர்ணயம்",
     help: "உதவி மற்றும் FAQ", contact: "தொடர்பு", privacyPolicy: "தனியுரிமை கொள்கை", terms: "சேவை விதிமுறைகள்",
+    sos: "SOS", sosTitle: "அவசர SOS", sosSubtitle: "உடனடி உதவிக்கு ஒரு டாப்", sosTap: "அவசர உதவிக்கு டாப் செய்யுங்கள்",
+    sosLocationTrack: "லைவ் இருப்பிடம்", sosPoliceCall: "காவல் நிலையம் (100)", sosEmergencyContacts: "அவசர தொடர்புகள்", sosAlertSent: "எச்சரிக்கை அனுப்பப்பட்டது! உதவி வருகிறது.",
+    voiceAssistant: "குரல் உதவியாளர்", voiceListening: "கேட்கிறது...", voicePrompt: "என்ன வேண்டும் சொல்லுங்கள்",
+    videoEdit: "வீடியோ எடிட்டர்", videoEditTitle: "வேலை வீடியோ எடிட்", videoEditDesc: "உங்கள் வேலையை காட்ட வீடியோ பதிவேற்றவும்", videoUpload: "வீடியோ பதிவேற்று", videoTrim: "ட்ரிம் & எடிட்", videoSave: "வீடியோ சேமி",
+    workerPortal: "தொழிலாளர் பதிவு", hiringPortal: "தொழிலாளரை நியமி", workerHeroTitle: "KaamPehechanல் சம்பாதிக்க", workerHeroSubtitle: "10,000+ சரிபார்க்கப்பட்ட தொழிலாளர்களுடன் சேருங்கள்.",
+    hiringHeroTitle: "நம்பகமான தொழிலாளர்களை கண்டறியுங்கள்", hiringHeroSubtitle: "எந்த வேலைக்கும் சரிபார்க்கப்பட்ட நிபுணர்களை முன்பதிவு செய்யுங்கள்.",
+    registerFirst: "முதலில் பதிவு செய்யுங்கள்", registerFirstDesc: "உள்நுழைவதற்கு முன் கணக்கை உருவாக்கவும்.", registeredEmail: "பதிவுசெய்த மின்னஞ்சல்",
+    incomingBookings: "வரவிருக்கும் முன்பதிவுகள்", newBookingRequest: "புதிய முன்பதிவு கோரிக்கை", acceptBooking: "ஏற்றுக்கொள்", declineBooking: "நிராகரி",
   },
   bn: {
     home: "হোম", browse: "খুঁজুন", nearMe: "কাছাকাছি", login: "লগ ইন", signup: "সাইন আপ",
@@ -185,6 +222,58 @@ const translations: Record<Language, TranslationKeys> = {
     idVerified: "আইডি যাচাইকৃত", skillCertified: "দক্ষতা সার্টিফাইড", policeVerified: "পুলিশ যাচাইকৃত", insured: "বিমাকৃত",
     aboutUs: "আমাদের সম্পর্কে", safety: "নিরাপত্তা ও যাচাইকরণ", pricing: "মূল্য নির্ধারণ",
     help: "সহায়তা ও FAQ", contact: "যোগাযোগ", privacyPolicy: "গোপনীয়তা নীতি", terms: "সেবার শর্তাবলী",
+    sos: "SOS", sosTitle: "জরুরি SOS", sosSubtitle: "তাৎক্ষণিক সাহায্যের জন্য এক ট্যাপ", sosTap: "জরুরি সাহায্যের জন্য ট্যাপ করুন",
+    sosLocationTrack: "লাইভ লোকেশন ট্র্যাকিং", sosPoliceCall: "পুলিশ কল (100)", sosEmergencyContacts: "জরুরি যোগাযোগ", sosAlertSent: "সতর্কতা পাঠানো হয়েছে! সাহায্য আসছে।",
+    voiceAssistant: "ভয়েস অ্যাসিস্ট্যান্ট", voiceListening: "শুনছি...", voicePrompt: "কী দরকার বলুন",
+    videoEdit: "ভিডিও এডিটর", videoEditTitle: "কাজের ভিডিও এডিট", videoEditDesc: "আপনার কাজ দেখাতে ভিডিও আপলোড ও এডিট করুন", videoUpload: "ভিডিও আপলোড", videoTrim: "ট্রিম ও এডিট", videoSave: "ভিডিও সেভ",
+    workerPortal: "কর্মী নিবন্ধন", hiringPortal: "কর্মী নিয়োগ", workerHeroTitle: "KaamPehechan এ আয় করুন", workerHeroSubtitle: "10,000+ যাচাইকৃত কর্মীদের সাথে যোগ দিন।",
+    hiringHeroTitle: "বিশ্বস্ত কর্মী খুঁজুন", hiringHeroSubtitle: "যেকোনো কাজের জন্য যাচাইকৃত পেশাদার বুক করুন।",
+    registerFirst: "প্রথমে নিবন্ধন করুন", registerFirstDesc: "লগইনের আগে অ্যাকাউন্ট তৈরি করুন।", registeredEmail: "নিবন্ধিত ইমেইল",
+    incomingBookings: "আসন্ন বুকিং", newBookingRequest: "নতুন বুকিং অনুরোধ", acceptBooking: "গ্রহণ করুন", declineBooking: "প্রত্যাখ্যান",
+  },
+  ur: {
+    home: "ہوم", browse: "تلاش کریں", nearMe: "قریب میں", login: "لاگ ان", signup: "سائن اپ",
+    dashboard: "ڈیش بورڈ", logout: "لاگ آؤٹ",
+    heroTitle: "قابل اعتماد ہنرمند کارکن تلاش کریں،\nفوری طور پر۔", heroSubtitle: "گھریلو خدمات، مرمت، بیوٹی، ڈرائیونگ اور 30+ ہنر مند خدمات کے لیے ہندوستان کا پریمیم تصدیق شدہ پلیٹ فارم۔",
+    searchPlaceholder: "کیا چاہیے؟ جیسے پلمبر، شیफ، ڈرائیور...", searchBtn: "تلاش کریں",
+    locationLabel: "آپ کی جگہ",
+    categoriesTitle: "تمام خدمات، ایک پلیٹ فارم", categoriesSubtitle: "گھر کی مرمت سے ذاتی دیکھ بھال تک — ہر ہنرمند پیشہ ور، تصدیق شدہ اور تیار۔",
+    bookNow: "ابھی بک کریں", viewProfile: "پروفائل دیکھیں", filters: "فلٹر", sortBy: "ترتیب",
+    loading: "لوڈ ہو رہا ہے...", noResults: "کوئی کارکن نہیں ملا۔ فلٹر تبدیل کریں۔",
+    available: "دستیاب", busy: "مصروف", offline: "آف لائن",
+    verified: "تصدیق شدہ", rating: "ریٹنگ", reviews: "جائزے",
+    experience: "تجربہ", years: "سال", hourlyRate: "فی گھنٹہ", visitCharge: "وزٹ",
+    distance: "فاصلہ", km: "کلومیٹر",
+    emailOrPhone: "ای میل یا فون", password: "پاس ورڈ", confirmPassword: "پاس ورڈ کی تصدیق",
+    forgotPassword: "پاس ورڈ بھول گئے؟", orContinueWith: "یا جاری رکھیں",
+    alreadyHaveAccount: "پہلے سے اکاؤنٹ ہے؟", dontHaveAccount: "اکاؤنٹ نہیں ہے؟",
+    asCustomer: "بطور گاہک", asWorker: "بطور کارکن", enterOTP: "OTP درج کریں",
+    resendOTP: "OTP دوبارہ بھیجیں", verifyOTP: "OTP کی تصدیق کریں",
+    selectDate: "تاریخ منتخب کریں", selectTime: "وقت سلاٹ منتخب کریں", yourAddress: "آپ کا پتہ",
+    jobDescription: "کام کی تفصیل دیں", priceBreakdown: "قیمت کی تفصیل",
+    subtotal: "ذیلی رقم", platformFee: "پلیٹ فارم فیس", taxes: "GST (18%)", total: "کل",
+    payNow: "ابھی ادائیگی کریں", payLater: "خدمت کے بعد ادائیگی", bookingConfirmed: "بکنگ کی تصدیق!",
+    bookingId: "بکنگ آئی ڈی",
+    upcomingBookings: "آنے والی", pastBookings: "گزشتہ بکنگز", savedWorkers: "محفوظ کارکنان",
+    paymentHistory: "ادائیگی کی تاریخ", earnings: "آمدنی", jobRequests: "کام کی درخواستیں",
+    todaySchedule: "آج کا شیڈول", myReviews: "میرے جائزے",
+    readMore: "مزید پڑھیں", readLess: "کم پڑھیں", shareProfile: "پروفائل شیئر کریں",
+    reportWorker: "رپورٹ کریں", writeReview: "جائزہ لکھیں", submitReview: "جائزہ جمع کریں",
+    cancel: "منسوخ کریں", confirm: "تصدیق کریں", save: "محفوظ کریں", edit: "ترمیم", delete: "حذف کریں",
+    upload: "اپ لوڈ", dragDrop: "فائلیں یہاں گھسیٹیں", chooseFile: "فائل منتخب کریں",
+    verifiedWorkers: "تصدیق شدہ کارکنان", citiesServed: "شہر", jobsCompleted: "مکمل کام", happyCustomers: "خوش گاہک",
+    trustTitle: "ہر کارکن، مکمل طور پر تصدیق شدہ",
+    idVerified: "آئی ڈی تصدیق شدہ", skillCertified: "ہنر کی تصدیق", policeVerified: "پولیس تصدیق شدہ", insured: "بیمہ شدہ",
+    aboutUs: "ہمارے بارے میں", safety: "حفاظت اور تصدیق", pricing: "قیمتیں",
+    help: "مدد اور FAQ", contact: "رابطہ", privacyPolicy: "رازداری کی پالیسی", terms: "سروس کی شرائط",
+    sos: "SOS", sosTitle: "ہنگامی SOS", sosSubtitle: "فوری مدد کے لیے ایک ٹیپ", sosTap: "ہنگامی مدد کے لیے ٹیپ کریں",
+    sosLocationTrack: "لائیو لوکیشن ٹریکنگ", sosPoliceCall: "پولیس کال (100)", sosEmergencyContacts: "ہنگامی رابطے", sosAlertSent: "الرٹ بھیجا گیا! مدد آ رہی ہے۔",
+    voiceAssistant: "وائس اسسٹنٹ", voiceListening: "سن رہا ہوں...", voicePrompt: "بتائیں کیا چاہیے — جیسے 'پلمبر تلاش کرو'",
+    videoEdit: "ویڈیو ایڈیٹر", videoEditTitle: "کام کی ویڈیوز ایڈیٹ کریں", videoEditDesc: "اپنا کام دکھانے کے لیے ویڈیو اپ لوڈ اور ایڈیٹ کریں", videoUpload: "ویڈیو اپ لوڈ", videoTrim: "ٹرم اور ایڈیٹ", videoSave: "ویڈیو محفوظ کریں",
+    workerPortal: "ورکر رجسٹر کریں", hiringPortal: "کارکن ملازم کریں", workerHeroTitle: "KaamPehechan سے کمائیں", workerHeroSubtitle: "10,000+ تصدیق شدہ کارکنوں میں شامل ہوں۔ نوکری کی درخواستیں حاصل کریں، شیڈول منظم کریں۔",
+    hiringHeroTitle: "قابل اعتماد کارکن تلاش کریں", hiringHeroSubtitle: "کسی بھی کام کے لیے تصدیق شدہ پیشہ ور افراد بک کریں — پلمبنگ، الیکٹریکل، بیوٹی، صفائی اور 30+ خدمات۔",
+    registerFirst: "پہلے رجسٹر کریں", registerFirstDesc: "سائن ان سے پہلے اکاؤنٹ بنائیں۔ نئے صارفین کو پہلے رجسٹر کرنا ہوگا۔", registeredEmail: "رجسٹرڈ ای میل",
+    incomingBookings: "آنے والی بکنگز", newBookingRequest: "نئی بکنگ درخواست", acceptBooking: "قبول کریں", declineBooking: "مسترد کریں",
   },
 };
 
