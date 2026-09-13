@@ -28,10 +28,10 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
-          <Link to="/" className={`nav-link ${isActive("/") ? "text-gold-400" : ""}`}>{t.home}</Link>
+          <Link to="/" className={`nav-link ${isActive("/") ? "text-gold-400" : ""}`}>{t.hiringPortal}</Link>
+          <Link to="/worker-portal" className={`nav-link ${isActive("/worker-portal") ? "text-emerald-400" : ""}`}>Register Worker</Link>
           <Link to="/browse" className={`nav-link ${isActive("/browse") ? "text-gold-400" : ""}`}>{t.browse}</Link>
           <Link to="/near-me" className={`nav-link ${isActive("/near-me") ? "text-gold-400" : ""}`}>{t.nearMe}</Link>
-          <Link to="/about" className="nav-link">{t.aboutUs}</Link>
           <Link to="/help" className="nav-link">{t.help}</Link>
         </div>
 
@@ -105,7 +105,7 @@ export default function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-ink-800/95 backdrop-blur-md border-t border-white/5 py-4 px-6 flex flex-col gap-3 animate-slide-down">
           {[
-            { to: "/", label: t.home }, { to: "/browse", label: t.browse },
+            { to: "/", label: t.home }, { to: "/worker-portal", label: "Register Worker" }, { to: "/browse", label: t.browse },
             { to: "/near-me", label: t.nearMe }, { to: "/about", label: t.aboutUs },
             { to: "/help", label: t.help }, { to: "/contact", label: t.contact },
           ].map(item => (
