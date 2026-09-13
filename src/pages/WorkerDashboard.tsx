@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, TrendingUp, Clock, CheckCircle, XCircle, ToggleLeft, ToggleRight } from "lucide-react";
+import { Star, TrendingUp, Clock, CheckCircle, XCircle, ToggleLeft, ToggleRight, Video, Bell } from "lucide-react";
 import { useAuth, useLang, useToast } from "@/contexts/AppContext";
 import { BOOKINGS } from "@/data/mockData";
 import { WORKERS } from "@/data/workers";
@@ -7,11 +7,13 @@ import { EARNINGS_DATA } from "@/data/mockData";
 import { formatCurrency, formatDate } from "@/lib/utils";
 import FileUpload from "@/components/FileUpload";
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
+import { useNavigate } from "react-router-dom";
 
 export default function WorkerDashboard() {
   const { user } = useAuth();
   const { t } = useLang();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [tab, setTab] = useState<"overview" | "requests" | "schedule" | "earnings" | "media" | "profile">("overview");
   const [available, setAvailable] = useState(true);
 
@@ -28,7 +30,7 @@ export default function WorkerDashboard() {
   const compScore = Math.round((Object.values(completeness).filter(Boolean).length / Object.keys(completeness).length) * 100);
 
   const TABS = [
-    { id: "overview", label: "Overview" }, { id: "requests", label: t.jobRequests, count: requests.length },
+    { id: "overview", label: "Overview" }, { id: "requests", label: t.incomingBookings, count: requests.length },
     { id: "schedule", label: t.todaySchedule }, { id: "earnings", label: t.earnings },
     { id: "media", label: "Media Manager" }, { id: "profile", label: "My Profile" },
   ] as const;
@@ -53,6 +55,21 @@ export default function WorkerDashboard() {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            {/* Incoming Bookings Notification */}
+            {requests.length > 0 && (
+              <button onClick={() => setTab("requests")}
+                className="relative flex items-center gap-2 glass-card px-3 py-2 hover:border-crimson-500/30 transition-all">
+                <Bell size={16} className="text-crimson-400 animate-pulse" />
+                <span className="text-xs text-crimson-400 font-medium">{requests.length} {t.newBookingRequest}</span>
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-crimson-600 rounded-full text-white text-xs flex items-center justify-center">{requests.length}</span>
+              </button>
+            )}
+            {/* Video Editor Button */}
+            <button onClick={() => navigate("/video-editor")}
+              className="flex items-center gap-2 glass-card px-3 py-2 hover:border-gold-700/40 transition-all">
+              <Video size={16} className="text-gold-500" />
+              <span className="text-xs text-gold-500 font-medium hidden sm:inline">{t.videoEdit}</span>
+            </button>
             <button onClick={() => { setAvailable(!available); toast("info", available ? "You are now Offline" : "You are now Available"); }}
               className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-sm font-medium transition-all ${available ? "border-emerald-500/40 text-emerald-400 bg-emerald-500/10" : "border-ink-500 text-gold-700"}`}>
               {available ? <ToggleRight size={18} /> : <ToggleLeft size={18} />}
@@ -264,6 +281,27 @@ export default function WorkerDashboard() {
               <h3 className="font-display font-semibold text-lg text-gold-400 mb-2">Intro Video</h3>
               <p className="text-gold-700 text-sm mb-4">Add a short 60-90 second video introducing yourself and your work. Videos increase bookings by 40%.</p>
               <FileUpload accept="video/*" multiple={false} label="Upload Intro Video (Optional)" hint="MP4, MOV • max 100MB • 30 to 120 seconds" maxSizeMB={100} />
+            </div>
+            {/* Video Editor Section */}
+            <div className="glass-card p-6">
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="font-display font-semibold text-lg text-gold-400">{t.videoEditTitle}</h3>
+                  <p className="text-gold-700 text-sm">{t.videoEditDesc}</p>
+                </div>
+                <button onClick={() => navigate("/video-editor")} className="btn-gold py-2 px-4 text-sm flex items-center gap-2">
+                  <Video size={14} /> Open Editor
+                </button>
+              </div>
+              <div className="bg-ink-800 rounded-xl p-4 flex items-center gap-4">
+                <div className="w-16 h-16 rounded-xl bg-gold-700/10 flex items-center justify-center flex-shrink-0">
+                  <Video size={24} className="text-gold-600" />
+                </div>
+                <div>
+                  <p className="text-gold-400 font-medium text-sm">Showcase Your Work</p>
+                  <p className="text-gold-700 text-xs">Upload, trim, and add filters to your work videos. Let customers see your skills in action.</p>
+                </div>
+              </div>
             </div>
           </div>
         )}
