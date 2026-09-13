@@ -46,6 +46,14 @@ export default function AuthPage() {
 
   const handleLogin = () => {
     if (!form.email || !form.password) { toast("error", "Please fill in all fields"); return; }
+    // Check if user has registered before (stored in localStorage)
+    const registeredUsers = JSON.parse(localStorage.getItem("kp_registered") || "[]");
+    const isRegistered = registeredUsers.some((u: any) => u.email === form.email);
+    if (!isRegistered) {
+      toast("error", t.registerFirstDesc);
+      setMode("signup");
+      return;
+    }
     simulateLoading(() => {
       login({
         id: `u-${Date.now()}`,
@@ -70,6 +78,11 @@ export default function AuthPage() {
     const code = form.otp.join("");
     if (code.length !== 6) { toast("error", "Please enter 6-digit OTP"); return; }
     simulateLoading(() => {
+      // Save registered user
+      const registeredUsers = JSON.parse(localStorage.getItem("kp_registered") || "[]");
+      registeredUsers.push({ email: form.email, name: form.name, role });
+      localStorage.setItem("kp_registered", JSON.stringify(registeredUsers));
+
       login({
         id: `u-${Date.now()}`,
         name: form.name, email: form.email, phone: form.phone,
@@ -84,6 +97,11 @@ export default function AuthPage() {
     if (step < WORKER_STEPS.length - 1) { setStep(s => s + 1); }
     else {
       simulateLoading(() => {
+        // Save registered worker
+        const registeredUsers = JSON.parse(localStorage.getItem("kp_registered") || "[]");
+        registeredUsers.push({ email: form.email, name: form.name, role: "worker" });
+        localStorage.setItem("kp_registered", JSON.stringify(registeredUsers));
+
         login({
           id: `w-${Date.now()}`, name: form.name, email: form.email, phone: form.phone,
           role: "worker", avatar: `https://randomuser.me/api/portraits/men/${Math.floor(Math.random() * 70) + 1}.jpg`,
@@ -364,6 +382,12 @@ export default function AuthPage() {
               {mode === "login" && (
                 <div className="text-right">
                   <button onClick={() => setMode("forgot")} className="text-xs text-gold-600 hover:text-gold-400">{t.forgotPassword}</button>
+                </div>
+              )}
+              {mode === "login" && (
+                <div className="bg-ink-800 rounded-xl p-3 text-xs text-gold-700 flex items-start gap-2">
+                  <span className="text-gold-500 flex-shrink-0">ℹ</span>
+                  <span>{t.registerFirstDesc}</span>
                 </div>
               )}
               <button onClick={mode === "login" ? handleLogin : handleSignup} disabled={loading}
