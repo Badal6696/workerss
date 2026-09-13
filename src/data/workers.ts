@@ -158,8 +158,50 @@ const BIO_TEMPLATES = [
   "Professional {cat} service provider operating in {city} for the past {exp} years. Fully insured and ID verified.",
 ];
 
-const PORTRAIT_MALE = Array.from({ length: 70 }, (_, i) => `https://randomuser.me/api/portraits/men/${i + 1}.jpg`);
-const PORTRAIT_FEMALE = Array.from({ length: 70 }, (_, i) => `https://randomuser.me/api/portraits/women/${i + 1}.jpg`);
+const PORTRAIT_MALE = [
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1463453091185-61582044d556?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1528892952291-009c663ce843?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1548372290-8d01b6c8e78c?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1570158268183-d296b2892211?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1589578228447-e1a4e481c88c?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1564564321837-a57b707067f4?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1545167622-3a6ac5701a01?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1583195764036-6dc248ac07d9?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1600486919242-808f97a0d542?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=300&h=300&fit=crop&crop=face",
+];
+const PORTRAIT_FEMALE = [
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1589183359640-75c0d16d6b3b?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1548142813-c348350df57b?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1542103749-8ef59b94f47e?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1559551409-dadc959f76b8?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1611432562926-a3d9ca05b59a?w=300&h=300&fit=crop&crop=face",
+  "https://images.unsplash.com/photo-1598550874175-4d0ef69f1f3e?w=300&h=300&fit=crop&crop=face",
+];
 
 const WORK_PHOTOS: Record<string, string[]> = {
   plumbing: ["https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=400&h=300&fit=crop","https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop","https://images.unsplash.com/photo-1584622781564-1d987f7333c1?w=400&h=300&fit=crop","https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&h=300&fit=crop"],
