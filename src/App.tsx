@@ -1,9 +1,13 @@
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { AppProvider, useAuth } from "@/contexts/AppContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import VoiceAssistant from "@/components/VoiceAssistant";
+import SOSButton from "@/components/SOSButton";
 import LandingPage from "@/pages/LandingPage";
+import HiringLanding from "@/pages/HiringLanding";
+import WorkerLanding from "@/pages/WorkerLanding";
 import AuthPage from "@/pages/AuthPage";
 import BrowsePage from "@/pages/BrowsePage";
 import NearMePage from "@/pages/NearMePage";
@@ -11,13 +15,14 @@ import WorkerProfile from "@/pages/WorkerProfile";
 import BookingFlow from "@/pages/BookingFlow";
 import CustomerDashboard from "@/pages/CustomerDashboard";
 import WorkerDashboard from "@/pages/WorkerDashboard";
+import VideoEditor from "@/pages/VideoEditor";
 import AdminPage from "@/pages/AdminPage";
 import {
   AboutPage, SafetyPage, HelpPage, ContactPage, PricingPage, NotFoundPage
 } from "@/pages/StaticPages";
 
 // Mobile Bottom Tab Bar
-import { Home, Search, MapPin, LayoutDashboard } from "lucide-react";
+import { Home, Search, MapPin, LayoutDashboard, Briefcase } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 function MobileTabBar() {
@@ -26,7 +31,8 @@ function MobileTabBar() {
   const isActive = (path: string) => location.pathname === path;
 
   const tabs = [
-    { to: "/", icon: <Home size={22} />, label: "Home" },
+    { to: "/", icon: <Home size={22} />, label: "Hire" },
+    { to: "/worker-portal", icon: <Briefcase size={22} />, label: "Register" },
     { to: "/browse", icon: <Search size={22} />, label: "Browse" },
     { to: "/near-me", icon: <MapPin size={22} />, label: "Near Me" },
     { to: isAuthenticated ? (user?.role === "worker" ? "/worker-dashboard" : "/dashboard") : "/login",
@@ -71,7 +77,9 @@ function AppRoutes() {
       <Navbar />
       <main>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<HiringLanding />} />
+          <Route path="/hiring" element={<HiringLanding />} />
+          <Route path="/worker-portal" element={<WorkerLanding />} />
           <Route path="/login" element={<AuthPage />} />
           <Route path="/signup" element={<AuthPage />} />
           <Route path="/browse" element={<BrowsePage />} />
@@ -80,6 +88,7 @@ function AppRoutes() {
           <Route path="/book/:id" element={<BookingFlow />} />
           <Route path="/dashboard" element={<ProtectedRoute><CustomerDashboard /></ProtectedRoute>} />
           <Route path="/worker-dashboard" element={<ProtectedRoute><WorkerDashboard /></ProtectedRoute>} />
+          <Route path="/video-editor" element={<ProtectedRoute role="worker"><VideoEditor /></ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute role="admin"><AdminPage /></ProtectedRoute>} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/safety" element={<SafetyPage />} />
@@ -93,6 +102,8 @@ function AppRoutes() {
       </main>
       <Footer />
       <MobileTabBar />
+      <VoiceAssistant />
+      <SOSButton />
     </>
   );
 }
@@ -100,9 +111,9 @@ function AppRoutes() {
 export default function App() {
   return (
     <AppProvider>
-      <BrowserRouter>
+      <HashRouter>
         <AppRoutes />
-      </BrowserRouter>
+      </HashRouter>
     </AppProvider>
   );
 }
